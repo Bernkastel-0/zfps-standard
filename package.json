@@ -1,0 +1,8 @@
+{
+  "name": "ZFPS",
+  "version": "1.0.0",
+  "description": "Standard FPS Script",
+  "author": "Bernkastel",
+  "license": "ISC",
+  "main": "index.js"
+}
