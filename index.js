@@ -92,7 +92,7 @@ module.exports = function ZFPS(dispatch) {
 			for(i = 0; i < zmr; i++){
 				if(hiddenplayers[hiddenindex[i]] != "block"){
 				dispatch.toClient('S_DESPAWN_USER', 2, {
-					target: hiddenplayers[hiddenindex[i]].cid,
+					target: hiddenplayers[hiddenindex[i]].guid,
 					type: 1,
 				});
 				}
@@ -108,14 +108,14 @@ module.exports = function ZFPS(dispatch) {
 		zmr = 0;
 	});
 	
-	dispatch.hook('S_SPAWN_USER', 3, (event) => {
-		if(hiddenplayers[event.cid] != "block"){
-			hiddenindex[zmr] = event.cid;
+	dispatch.hook('S_SPAWN_USER', 10, (event) => {
+		if(hiddenplayers[event.guid] != "block"){
+			hiddenindex[zmr] = event.guid;
 			zmr++;
 		}
-		hiddenplayers[event.cid] = event;
-		locx[event.cid] = event.x;
-		locy[event.cid] = event.y;
+		hiddenplayers[event.guid] = event;
+		locx[event.guid] = event.x;
+		locy[event.guid] = event.y;
         if(lagstate == 2){
 			return false;
 		}
