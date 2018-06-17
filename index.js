@@ -23,7 +23,7 @@ module.exports = function ZFPS(dispatch) {
 	let locy = [];
 	
 	
-	dispatch.hook('S_LOGIN', 8, (event) => {
+	dispatch.hook('S_LOGIN', 10, (event) => {
     ({cid, model} = event);
 	player = event.name;
     job = (model - 10101) % 100;
