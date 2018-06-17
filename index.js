@@ -23,7 +23,7 @@ module.exports = function ZFPS(dispatch) {
 	let locy = [];
 	
 	
-	dispatch.hook('sLogin', 1, (event) => {
+	dispatch.hook('S_LOGIN', 8, (event) => {
     ({cid, model} = event);
 	player = event.name;
     job = (model - 10101) % 100;
@@ -39,13 +39,13 @@ module.exports = function ZFPS(dispatch) {
     })
 	
 	//Char and Skill Hidden
-	dispatch.hook('cChat', 1, (event) => {
+	dispatch.hook('C_CHAT', 1, (event) => {
 	if(event.message.includes("lag0") || event.message.includes("lag1") || event.message.includes("lag2")){
 		lastlagstate = lagstate;
 		if(event.message.includes("lag0")){
 			lagstate = 0;
 			console.log("ZFPS optimization disabled.");
-			dispatch.toClient('sWhisper', 1, {
+			dispatch.toClient('S_WHISPER', 1, {
 					player: cid,
 					unk1: 0,
 					gm: 0,
@@ -58,7 +58,7 @@ module.exports = function ZFPS(dispatch) {
 		if(event.message.includes("lag1")){
 			lagstate = 1;
 			console.log("ZFPS optimization set to remove other player effects.");
-			dispatch.toClient('sWhisper', 1, {
+			dispatch.toClient('S_WHISPER', 1, {
 					player: cid,
 					unk1: 0,
 					gm: 0,
@@ -71,7 +71,7 @@ module.exports = function ZFPS(dispatch) {
 		if(event.message.includes("lag2")){
 			lagstate = 2;
 			console.log("ZFPS optimization set to remove other players.");
-			dispatch.toClient('sWhisper', 1, {
+			dispatch.toClient('S_WHISPER', 1, {
 					player: cid,
 					unk1: 0,
 					gm: 0,
