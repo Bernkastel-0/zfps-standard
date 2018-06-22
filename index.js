@@ -84,7 +84,7 @@ module.exports = function ZFPS(dispatch) {
 		if(lagstate != 2 && lastlagstate == 2){
 			for(i = 0; i < zmr; i++){
 				if(hiddenplayers[hiddenindex[i]] != "block"){
-				dispatch.toClient('S_SPAWN_USER', 3, hiddenplayers[hiddenindex[i]]);
+				dispatch.toClient('S_SPAWN_USER', 12, hiddenplayers[hiddenindex[i]]);
 				}
 			}
 		}
@@ -108,14 +108,14 @@ module.exports = function ZFPS(dispatch) {
 		zmr = 0;
 	});
 	
-	dispatch.hook('S_SPAWN_USER', 10, (event) => {
-		if(hiddenplayers[event.guid] != "block"){
-			hiddenindex[zmr] = event.guid;
+	dispatch.hook('S_SPAWN_USER', 12, (event) => {
+		if(hiddenplayers[event.gameId] != "block"){
+			hiddenindex[zmr] = event.gameId;
 			zmr++;
 		}
-		hiddenplayers[event.guid] = event;
-		locx[event.guid] = event.x;
-		locy[event.guid] = event.y;
+		hiddenplayers[event.gameId] = event;
+		locx[event.gameId] = event.x;
+		locy[event.gameId] = event.y;
         if(lagstate == 2){
 			return false;
 		}
